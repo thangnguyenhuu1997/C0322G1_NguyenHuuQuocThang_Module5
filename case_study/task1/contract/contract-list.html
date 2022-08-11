@@ -47,15 +47,27 @@
     </thead>
     <tbody>
     <tr>
-        <th>1</th>
-        <th>HD-0001</th>
-        <th>06-05-2022</th>
-        <th>07-05-2022</th>
-        <th>10000000</th>
-        <th>20000000</th>
-        <th>Nguyễn Văn A</th>
-        <th>Quốc Thắng</th>
+        <td>1</td>
+        <td>HD-0001</td>
+        <td>06-05-2022</td>
+        <td>07-05-2022</td>
+        <td>10000000</td>
+        <td>20000000</td>
+        <td>Nguyễn Văn A</td>
+        <td>Quốc Thắng</td>
         <th>Villa</th>
+        <td>
+            <a type="button" class="btn btn-link btn-sm btn-rounded edit_btn" href="customer-edit.html" >
+                Sửa
+            </a>
+        </td>
+        <td>
+            <a type="button" class="btn btn-danger btn-sm btn-rounded delete_btn" data-mdb-toggle="modal"
+               data-mdb-target="#deleteModal" data-id="1" data-name="Quốc Thắng"
+               onclick="sendInfo($(this))">
+                Xóa
+            </a>
+        </td>
     </tr>
     </tbody>
 </table>
@@ -82,7 +94,26 @@
         </nav>
     </div>
 </div>
-
+<div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <input type="hidden" name="idDelete" id="idDelete">
+                <div class="modal-header">
+                    <h5 class="modal-title">Xác nhận xóa</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn chắc chắn muốn xóa hợp đồng <span class="text-danger" id="deleteName"></span> ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal" >Hủy</button>
+                    <input type="submit" class="btn btn-danger" id="delete_btn" value="Đồng ý"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <div id="footer"></div>
 
 </body>
