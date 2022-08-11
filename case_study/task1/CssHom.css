@@ -1,0 +1,111 @@
+.sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+body {
+    font-family: Arial;
+    font-size: 13px;
+    color: #333333;
+}
+
+
+#logo img {
+    width: 100px;
+    height: 70px;
+}
+#header-menu {
+    display: flex;
+    list-style: none;
+    padding-top: 15px;
+}
+
+#header-menu .button__icon button {
+    font-size: 7px;
+    height: 35px;
+    align-content: center;
+
+}
+
+.button_sum1 {
+    padding-left: 55px;
+    font-size: 15px;
+}
+
+.button_sum2 {
+    padding-left: 55px;
+    font-size: 15px;
+}
+
+.button_sum3 {
+    padding-left: 55px;
+    font-size: 15px;
+}
+
+.button_sum4 {
+    padding-left: 55px;
+    font-size: 20px;
+}
+
+.button_sum5 {
+    padding-left: 55px;
+    font-size: 14px;
+}
+
+.button__icon a {
+    font-size: 14px;
+    color: #f1f1f1;
+}
+
+.login {
+    margin-left: 5px;
+    margin-top: 15px;
+}
+
+.logout {
+    margin-left: 60px;
+    margin-top: 15px;
+
+}
+
+#body {
+    background-color: #e7ecf4;
+}
+
+.header-menu-bar {
+    background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+
+
+}
+
+.haha {
+    box-sizing: border-box;
+    padding-left: 70px;
+}
+
+.card img{
+    width: 270px;
+    height: 320px;
+    text-align: center;
+    margin-right: 5px; !important;
+    margin-left: 5px; !important;
+}
+
+.img-fluid{
+    height: 314.5px;
+    padding-left: 0px; !important;
+    width: 100%;
+
+}
+
+.thang a{
+    color: black;
+    font-size: 18px;
+}
