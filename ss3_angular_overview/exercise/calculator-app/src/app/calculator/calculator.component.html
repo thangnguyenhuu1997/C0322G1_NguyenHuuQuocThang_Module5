@@ -1,0 +1,26 @@
+<h1>Caculator</h1>
+<table>
+  <tr>
+    <td>Number 1</td>
+    <td>Number 2</td>
+  </tr>
+  <tr>
+    <td>
+      <input type="number" name="num1" [(ngModel)]="num1" )]>
+    </td>
+    <td>
+      <input type="number" name="num2" [(ngModel)]="num2" )]>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <button type="button" (click)="add()")>Cộng</button>
+      <button type="button" (click)="sub()" )>Trừ</button>
+    </td>
+    <td>
+      <button type="button" (click)="mul()" )>Nhân</button>
+      <button type="button" (click)="div()" )>Chia</button>
+    </td>
+  </tr>
+</table>
+<p>Kết quả: {{result}}</p>
