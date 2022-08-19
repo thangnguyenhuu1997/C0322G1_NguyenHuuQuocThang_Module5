@@ -1,0 +1,63 @@
+<div class="d-flex flex-row justify-content-between mb-2">
+  <a class="btn btn-primary" routerLink="/customer/create"><i class="far fa-plus-square"></i> Thêm khách hàng</a>
+  <div class="d-flex flex-row">
+    <input class="form-control mr-2" type="text" [(ngModel)]="searchValue" (change)="doSearch()" placeholder="Tìm kiếm">
+    <button class="btn btn-outline-primary btn-sm btn-search" (click)="doSearch()">Tìm kiếm</button>
+  </div>
+</div>
+<table class="table table-bordered">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Mã khách hàng</th>
+    <th scope="col">Họ tên</th>
+    <th scope="col">Hạng khách</th>
+    <th scope="col">Ngày sinh</th>
+    <th scope="col">Giới tính</th>
+    <th scope="col">CCCD</th>
+    <th scope="col">Số điện thoại</th>
+    <th scope="col">Email</th>
+    <th scope="col">Địa chỉ</th>
+    <th scope="col">Xem</th>
+    <th scope="col">Chỉnh sửa</th>
+    <th scope="col">Xóa</th>
+  </tr>
+  <tr *ngFor="let customer of customerList; index as i">
+    <td>{{customer.id}}</td>
+    <td>{{customer.code}}</td>
+    <td>{{customer.name}}</td>
+    <td>{{customer.typeCustomer.name}}</td>
+    <td>{{customer.birthday}}</td>
+    <td *ngIf="customer.gender==1">Nam</td>
+    <td *ngIf="customer.gender==2">Nu</td>
+    <td>{{customer.idCard }}</td>
+    <td>{{customer.phone }}</td>
+    <td>{{customer.email }}</td>
+    <td>{{customer.address }}</td>
+    <td><a routerLink="/view-customer/{{customer.id}}"> Xem</a></td>
+    <td><a routerLink="/edit-customer/{{customer.id}}"> Edit</a></td>
+    <td><button type="button" class="btn badge-danger" (click)="setIdCustomerDelete(customer)" data-toggle="modal" data-target="#exampleModal"> Delete</button></td>
+  </tr>
+  </thead>
+</table>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> Delete Service</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        id: {{customerDelete.id}}<br>
+        name: {{customerDelete.name}}<br>
+        Do you want delete this Customer ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button (click)="deleteCustomer()" data-dismiss="modal"> Delete </button>
+      </div>
+    </div>
+  </div>
+</div>

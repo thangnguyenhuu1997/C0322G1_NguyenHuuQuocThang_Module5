@@ -8,6 +8,8 @@ import {RouterModule} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {FooterComponent} from './templates/footer/footer.component';
 import {HeaderComponent} from './templates/header/header.component';
+import { ContractComponent } from './model/contract/contract.component';
+import { CustomerListComponent } from './customer/customer-list/customer-list.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import {HeaderComponent} from './templates/header/header.component';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
+    ContractComponent,
+    CustomerListComponent,
   ],
   imports: [
     BrowserModule

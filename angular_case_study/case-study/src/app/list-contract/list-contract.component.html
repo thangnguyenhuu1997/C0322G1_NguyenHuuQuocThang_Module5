@@ -1,0 +1,22 @@
+<table class="table table-bordered">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">id</th>
+    <th scope="col">Contract Code</th>
+    <th scope="col">Start Date</th>
+    <th scope="col">End Date</th>
+    <th scope="col">Deposit</th>
+    <th scope="col">Total Payment Amount</th>
+  </tr>
+  </thead>
+  <tbody id="customerList">
+  <tr *ngFor="let contract of contract; index as i">
+    <td>{{i + 1}}</td>
+    <td>{{contract.id}}</td>
+    <td>{{contract.startDate}}</td>
+    <td>{{contract.endDate}}</td>
+    <td>{{contract.deposit}}</td>
+    <td>{{contract.totalPayment}}</td>
+  </tr>
+  </tbody>
+</table>
