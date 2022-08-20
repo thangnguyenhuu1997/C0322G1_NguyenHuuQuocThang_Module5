@@ -1,0 +1,20 @@
+<div class="row d-flex justify-content-center bg-light">
+  <h1>DICTIONARY LOOKUP APP</h1>
+</div>
+<table class="table table-striped text-align-center">
+  <thead class="thead-dark">
+  <tr>
+    <th style="text-align: center" scope="col">STT</th>
+    <th style="text-align: center" scope="col">ENGLISH</th>
+    <th style="text-align: center" scope="col">DETAIL</th>
+  </tr>
+  </thead>
+  <tbody id="customerList" style="text-align: center">
+  <tr *ngFor="let item of dictionaryList; index as i">
+    <td>{{i + 1}}</td>
+    <td>{{item.english}}</td>
+    <td routerLink="/detail/{{item.id}}" class="btn btn-primary m-1">Detail</td>
+  </tr>
+  </tbody>
+
+</table>

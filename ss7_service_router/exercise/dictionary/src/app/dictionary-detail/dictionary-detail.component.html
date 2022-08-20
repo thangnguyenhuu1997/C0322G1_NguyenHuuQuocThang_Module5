@@ -1,0 +1,22 @@
+<div class=" d-flex justify-content-center bg-light">
+  <h1>DICTIONARY LOOKUP APP</h1>
+</div>
+<table class="table table-striped text-align-center">
+  <thead class="thead-dark">
+  <tr>
+    <th style="text-align: center" scope="col">STT</th>
+    <th style="text-align: center" scope="col">ENGLISH</th>
+    <th style="text-align: center" scope="col">VIETNAMESE</th>
+  </tr>
+  </thead>
+  <tbody id="customerList" style="text-align: center">
+  <tr>
+    <td>{{dictionary.id}}</td>
+    <td>{{dictionary.english}}</td>
+    <td>{{dictionary.vietnamese}}</td>
+  </tr>
+  </tbody>
+</table>
+<div class="mb-5">
+  <button class="btn-primary" (click)="DetailInfoDictionary()"> Back List</button>
+</div>
