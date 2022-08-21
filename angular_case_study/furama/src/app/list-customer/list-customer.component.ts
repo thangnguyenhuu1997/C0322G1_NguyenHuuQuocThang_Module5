@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Customer} from '../model/customer';
 import {CustomerService} from '../service/customer.service';
 import {Router} from '@angular/router';
-// @ts-ignore
 import {ToastrService} from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-list-customer',

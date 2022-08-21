@@ -1,40 +1,37 @@
 import { Injectable } from '@angular/core';
-import {Customer} from '../model/customer';
-import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import {Customer} from '../model/customer';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-  customers: Customer[] = [];
-  private URL_CUSTOMER = 'http://localhost:3000/customer';
+  private API_URL = 'http://localhost:3000/customerList';
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private http: HttpClient) {
   }
 
-  getAllCustomer(): Observable<Customer[]> {
-    return this.httpClient.get<Customer[]>(this.URL_CUSTOMER);
+  getAll(): Observable<Customer[]> {
+    return this.http.get<Customer[]>(this.API_URL);
   }
 
-
-  getAllCustomerByName(name: string): Observable<Customer[]> {
-    return this.httpClient.get<Customer[]>(this.URL_CUSTOMER + '?name_like=' + name);
+  addCustomer(customer): Observable<Customer> {
+    return this.http.post<Customer>(this.API_URL, customer);
   }
 
-  saveCustomer(customer: Customer) {
-    return this.httpClient.post<Customer>(this.URL_CUSTOMER, customer);
+  findById(id: number): Observable<Customer> {
+    return this.http.get<Customer>(this.API_URL + '/' + id);
   }
 
-  delete(id: number): Observable<Customer> {
-    return this.httpClient.delete<Customer>(this.URL_CUSTOMER + '/' + id);
+  updateCustomer(id: number, customer: Customer): Observable<Customer> {
+    return this.http.patch<Customer>(this.API_URL + '/' + id, customer);
   }
 
-  getCustomerById(id: number): Observable<Customer> {
-    return this.httpClient.get<Customer>(this.URL_CUSTOMER + '/' + id);
+  deleteCustomer(id: number ): Observable<Customer> {
+    return this.http.delete<Customer>(this.API_URL + '/' + id);
   }
-
-  editCustomer(id: number, customer: Customer) {
-    return this.httpClient.patch(this.URL_CUSTOMER + '/' + id, customer);
+  search(search: string): Observable<Customer[]> {
+    return this.http.get<Customer[]>(this.API_URL + '?name_like=' + search);
   }
 }
