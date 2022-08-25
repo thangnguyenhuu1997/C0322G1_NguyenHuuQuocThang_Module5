@@ -1,0 +1,206 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-2 mt-4">
+      <div class="container-fluid">
+        <div class="row pb-3">
+          <img src="../../../assets/images/r1.PNG" alt="">
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row pb-3">
+          <img src="../../../assets/images/r2.PNG" alt="">
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row pb-3">
+          <img src="../../../assets/images/r3.PNG" alt="">
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row pb-3">
+          <img src="../../../assets/images/r4.PNG" alt="">
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row pb-3">
+          <img src="../../../assets/images/r5.PNG" alt="">
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row">
+          <img src="../../../assets/images/r6.PNG" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-10 mt-4">
+      <div class="container-fluid">
+        <div class="row">
+          <h3 align="center">THÊM MỚI DỊCH VỤ</h3>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-2"></div>
+          <div class="col-lg-8">
+            <form [formGroup]="facilityForm" (ngSubmit)="submit()">
+              <table class="table" cellpadding="5">
+                <tr>
+                  <th>Loại dịch vụ:</th>
+                  <td>
+                    <select class="form-select" formControlName="facilityType" (change)="getType($event.target.value)">
+                      <option [defaultSelected]="facilityForm" value="" disabled>--Chọn loại dịch vụ--</option>
+                      <option *ngFor="let item of facilityTypes" [ngValue]="item.name">{{item.name}}</option>
+                    </select>
+                    <div class="text-danger" *ngFor="let validation of validationMessage.facilityType">
+                      <span
+                        *ngIf="facilityForm.get('facilityType').hasError(validation.type) && facilityForm.get('facilityType').touched">{{validation.message}}</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Tên dịch vụ:</th>
+                  <td>
+                    <input type="text" formControlName="name" class="form-control">
+                    <div class="text-danger" *ngFor="let validation of validationMessage.name">
+                      <span
+                        *ngIf="facilityForm.get('name').hasError(validation.type) && facilityForm.get('name').touched">{{validation.message}}</span>
+                    </div>
+                  </td>
+
+                </tr>
+                <tr>
+                  <th>Diện tích:</th>
+                  <td>
+                    <input type="text" formControlName="area" class="form-control">
+                    <div class="text-danger" *ngFor="let validation of validationMessage.area">
+                      <span
+                        *ngIf="facilityForm.get('area').hasError(validation.type) && facilityForm.get('area').touched">{{validation.message}}</span>
+                    </div>
+                  </td>
+
+                </tr>
+                <tr>
+                  <th>Giá thuê:</th>
+                  <td>
+                    <input type="text" formControlName="cost" class="form-control">
+                    <div class="text-danger" *ngFor="let validation of validationMessage.cost">
+                      <span
+                        *ngIf="facilityForm.get('cost').hasError(validation.type) && facilityForm.get('cost').touched">{{validation.message}}</span>
+                    </div>
+                  </td>
+
+                </tr>
+                <tr>
+                  <th>Số người tối đa:</th>
+                  <td>
+                    <input type="text" formControlName="maxPeople" class="form-control">
+                    <div class="text-danger" *ngFor="let validation of validationMessage.maxPeople">
+                      <span
+                        *ngIf="facilityForm.get('maxPeople').hasError(validation.type) && facilityForm.get('maxPeople').touched">{{validation.message}}</span>
+                    </div>
+                  </td>
+
+                </tr>
+                <tr>
+                  <th>Kiểu thuê:</th>
+                  <td>
+                    <select class="form-select" formControlName="rentType">
+                      <option [defaultSelected]="facilityForm" value="" disabled>--Chọn kiểu thuê--</option>
+                      <option *ngFor="let item of rentTypes" [ngValue]="item.name">{{item.name}}</option>
+                    </select>
+                    <div class="text-danger" *ngFor="let validation of validationMessage.rentType">
+                      <span
+                        *ngIf="facilityForm.get('rentType').hasError(validation.type) && facilityForm.get('rentType').touched">{{validation.message}}</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Chọn ảnh:</th>
+                  <td>
+                    <input type="text" class="form-control" formControlName="image">
+                  </td>
+                </tr>
+                <tr id="standardRoom" *ngIf="type === 'Villa' || type === 'House'" type="hidden">
+                  <th>Loại phòng:</th>
+                  <td>
+                    <select class="form-select" formControlName="standardRoom">
+                      <option [defaultSelected]="facilityForm" value="" disabled>--Chọn loại phòng--</option>
+                      <option *ngFor="let item of standardRooms" [ngValue]="item.name">{{item.name}}</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr id="otherDescription" *ngIf="type === 'Villa' || type === 'House'" type="hidden">
+                  <th>Tiện nghi khác:</th>
+                  <td>
+                    <input class="form-control" formControlName="otherDescription" type="text"/>
+                  </td>
+                </tr>
+                <tr id="poolArea" *ngIf="type === 'Villa'" type="hidden">
+                  <th>Diện tích hồ bơi:</th>
+                  <td>
+                    <input class="form-control" formControlName="poolArea" type="text"/>
+                    <div class="text-danger" *ngFor="let validation of validationMessage.poolArea">
+                      <span
+                        *ngIf="facilityForm.get('poolArea').hasError(validation.type) && facilityForm.get('poolArea').touched">{{validation.message}}</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr id="numberFloor" *ngIf="type === 'Villa' || type === 'House'" type="hidden">
+                  <th>Số tầng:</th>
+                  <td>
+                    <input class="form-control" formControlName="numberFloor" type="text"/>
+                    <div class="text-danger" *ngFor="let validation of validationMessage.numberFloor">
+                      <span
+                        *ngIf="facilityForm.get('numberFloor').hasError(validation.type) && facilityForm.get('numberFloor').touched">{{validation.message}}</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr id="facilityFree" *ngIf="type === 'Room'" type="hidden">
+                  <th>Dịch vụ miễn phí đi kèm:</th>
+                  <td>
+                    <input class="form-control" formControlName="facilityFree" type="text"/>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td align="center">
+                    <a routerLink="/facility/list">
+                      <button type="button" class="btn btn-outline-primary">
+                        Quay lại
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                             fill="currentColor" class="bi bi-arrow-return-left"
+                             viewBox="0 0 16 16">
+                          <path fill-rule="evenodd"
+                                d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+                        </svg>
+                      </button>
+                    </a>
+                  </td>
+                  <td align="left">
+                    <button [disabled]="facilityForm.invalid" class="btn btn-outline-primary">
+                      Thêm mới
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                           fill="currentColor" class="bi bi-save" viewBox="0 0 16 16">
+                        <path
+                          d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"/>
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+              </table>
+            </form>
+          </div>
+          <div class="col-lg-2"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

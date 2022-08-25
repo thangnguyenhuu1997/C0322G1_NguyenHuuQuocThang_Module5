@@ -1,0 +1,180 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-2 mt-4">
+      <div class="container-fluid">
+        <div class="row pb-3">
+          <img src="../../../assets/images/r1.PNG" alt="">
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row pb-3">
+          <img src="../../../assets/images/r2.PNG" alt="">
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row pb-3">
+          <img src="../../../assets/images/r3.PNG" alt="">
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row pb-3">
+          <img src="../../../assets/images/r4.PNG" alt="">
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row pb-3">
+          <img src="../../../assets/images/r5.PNG" alt="">
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row">
+          <img src="../../../assets/images/r6.PNG" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-10 mt-4">
+      <div class="container-fluid">
+        <div class="row">
+          <h3 align="center">TẠO MỚI KHÁCH HÀNG</h3>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-2"></div>
+          <div class="col-lg-8">
+            <form [formGroup]="customerForm" (ngSubmit)="submit()">
+              <table class="table" cellpadding="5">
+                <tr>
+                  <th>Tên khách hàng:</th>
+                  <td>
+                    <input type="text" formControlName="name" class="form-control">
+                    <div class="text-danger" *ngFor="let validation of validationMessage.name">
+                      <span
+                        *ngIf="customerForm.get('name').hasError(validation.type) && customerForm.get('name').touched">{{validation.message}}</span>
+                    </div>
+                  </td>
+
+                </tr>
+                <tr>
+                  <th>Ngày sinh:</th>
+                  <td>
+                    <input type="date" formControlName="birthDay" class="form-control">
+                    <div class="text-danger" *ngFor="let validation of validationMessage.birthDay">
+                      <span
+                        *ngIf="customerForm.get('birthDay').hasError(validation.type) && customerForm.get('birthDay').touched">{{validation.message}}</span>
+                      <span class="text-danger" *ngIf="customerForm.get('birthDay').hasError('checkAge')">*Tuổi từ 3 đến 90 tuổi</span>
+                    </div>
+
+                  </td>
+
+                </tr>
+                <tr>
+                  <th>Giới tính:</th>
+                  <td>
+                    <input type="radio" class="form-check-inline" value="Nam" formControlName="gender">Nam
+                    <input type="radio" class="form-check-inline" value="Nữ" formControlName="gender">Nữ
+                    <input type="radio" class="form-check-inline" value="Khác" formControlName="gender">Khác
+                    <div class="text-danger" *ngFor="let validation of validationMessage.gender">
+                      <span
+                        *ngIf="customerForm.get('gender').hasError(validation.type) && customerForm.get('gender').touched">{{validation.message}}</span>
+                    </div>
+                  </td>
+
+                </tr>
+                <tr>
+                  <th>Số CMND:</th>
+                  <td>
+                    <input type="text" formControlName="idCard" class="form-control">
+                    <div class="text-danger" *ngFor="let validation of validationMessage.idCard">
+                      <span
+                        *ngIf="customerForm.get('idCard').hasError(validation.type) && customerForm.get('idCard').touched">{{validation.message}}</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Địa chỉ:</th>
+                  <td>
+                    <input class="form-control" formControlName="address" type="text">
+                    <div class="text-danger" *ngFor="let validation of validationMessage.address">
+                      <span
+                        *ngIf="customerForm.get('address').hasError(validation.type) && customerForm.get('address').touched">{{validation.message}}</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Email:</th>
+                  <td>
+                    <input class="form-control" formControlName="email" type="text">
+                    <div class="text-danger" *ngFor="let validation of validationMessage.email">
+                      <span
+                        *ngIf="customerForm.get('email').hasError(validation.type) && customerForm.get('email').touched">{{validation.message}}</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Số điện thoại:</th>
+                  <td>
+                    <input class="form-control" formControlName="phone" type="text">
+                    <div class="text-danger" *ngFor="let validation of validationMessage.phone">
+                      <span
+                        *ngIf="customerForm.get('phone').hasError(validation.type) && customerForm.get('phone').touched">{{validation.message}}</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Loại khách hàng:</th>
+                  <td>
+                    <select class="form-select" formControlName="type">
+                      <option [defaultSelected]="customerForm" value="" disabled>--Chọn loại khách hàng--</option>
+                      <option *ngFor="let item of customerTypes" [ngValue]="item.name">{{item.name}}</option>
+                    </select>
+                    <div class="text-danger" *ngFor="let validation of validationMessage.type">
+                      <span
+                        *ngIf="customerForm.get('type').hasError(validation.type) && customerForm.get('type').touched">{{validation.message}}</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <a routerLink="/customer/list">
+                      <button type="button" class="btn btn-outline-primary">
+                        Quay lại
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                             fill="currentColor" class="bi bi-arrow-return-left"
+                             viewBox="0 0 16 16">
+                          <path fill-rule="evenodd"
+                                d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+                        </svg>
+                      </button>
+                    </a>
+                  </td>
+
+                  <td align="left">
+                    <button class="btn btn-outline-primary">
+                      Tạo mới
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                           fill="currentColor" class="bi bi-save" viewBox="0 0 16 16">
+                        <path
+                          d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"/>
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+              </table>
+            </form>
+          </div>
+          <div class="col-lg-2"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

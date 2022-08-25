@@ -1,0 +1,143 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-2 mt-4">
+      <div class="container-fluid">
+        <div class="row pb-3">
+          <img src="../../../assets/images/r1.PNG" alt="">
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row pb-3">
+          <img src="../../../assets/images/r2.PNG" alt="">
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row pb-3">
+          <img src="../../../assets/images/r3.PNG" alt="">
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row pb-3">
+          <img src="../../../assets/images/r4.PNG" alt="">
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row pb-3">
+          <img src="../../../assets/images/r5.PNG" alt="">
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row">
+          <img src="../../../assets/images/r6.PNG" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-10 mt-4">
+      <div class="container-fluid">
+        <div class="row">
+          <h3 align="center">THÊM MỚI HỢP ĐỒNG</h3>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-2"></div>
+          <div class="col-lg-8">
+            <form [formGroup]="contractForm" (ngSubmit)="submit()">
+              <table class="table" cellpadding="5">
+                <tr>
+                  <th>Dịch vụ:</th>
+                  <td>
+                    <select class="form-select" formControlName="facility">
+                      <option [defaultSelected]="contractForm" value="" disabled>--Chọn dịch vụ--</option>
+                      <option *ngFor="let facility of facilities" [ngValue]="facility.name">{{facility.name}}</option>
+                    </select>
+                    <div class="text-danger" *ngFor="let validation of validationMessage.facility">
+                      <span *ngIf="contractForm.get('facility').hasError(validation.type) && contractForm.get('facility').touched">{{validation.message}}</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Khách hàng:</th>
+                  <td>
+                    <select class="form-select" formControlName="customer">
+                      <option [defaultSelected]="contractForm" value="">--Chọn khách hàng--</option>
+                      <option *ngFor="let customer of customers" [ngValue]="customer.name">{{customer.name}}</option>
+                    </select>
+                    <div class="text-danger" *ngFor="let validation of validationMessage.customer">
+                      <span *ngIf="contractForm.get('customer').hasError(validation.type) && contractForm.get('customer').touched">{{validation.message}}</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Ngày làm hợp đồng:</th>
+                  <td>
+                    <input type="date" class="form-control" formControlName="startDate">
+                    <div class="text-danger" *ngFor="let validation of validationMessage.startDate">
+                      <span *ngIf="contractForm.get('startDate').hasError(validation.type) && contractForm.get('startDate').touched">{{validation.message}}</span>
+                    </div>
+                  </td>
+
+                </tr>
+                <tr>
+                  <th>Ngày kết thúc hợp đồng:</th>
+                  <td>
+                    <input type="date" class="form-control" formControlName="endDate">
+                    <div class="text-danger" *ngFor="let validation of validationMessage.endDate">
+                      <span *ngIf="contractForm.get('endDate').hasError(validation.type) && contractForm.get('endDate').touched">{{validation.message}}</span>
+                    </div>
+                  </td>
+
+                </tr>
+                <tr>
+                  <th>Tiền đặt cọc:</th>
+                  <td>
+                    <input type="number" class="form-control" formControlName="deposit">
+                    <div class="text-danger" *ngFor="let validation of validationMessage.deposit">
+                      <span *ngIf="contractForm.get('deposit').hasError(validation.type) && contractForm.get('deposit').touched">{{validation.message}}</span>
+                    </div>
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td align="center">
+                    <a routerLink="/contract/list">
+                      <button type="button" class="btn btn-outline-primary">
+                        Quay lại
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                             fill="currentColor" class="bi bi-arrow-return-left"
+                             viewBox="0 0 16 16">
+                          <path fill-rule="evenodd"
+                                d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+                        </svg>
+                      </button>
+                    </a>
+                  </td>
+                  <td align="left">
+                    <button class="btn btn-outline-primary">
+                      Tạo mới
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                           fill="currentColor" class="bi bi-save" viewBox="0 0 16 16">
+                        <path
+                          d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"/>
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+              </table>
+            </form>
+          </div>
+          <div class="col-lg-2"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

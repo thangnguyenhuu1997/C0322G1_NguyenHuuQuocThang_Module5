@@ -1,0 +1,85 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>Furama Resort</title>
+
+</head>
+
+<div class="container-fluid">
+  <div class="row">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                aria-label="Slide 4"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="../../assets/images/p1.PNG" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="../../assets/images/p2.PNG" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="../../assets/images/p3.PNG" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="../../assets/images/p4.PNG" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="row" id="furama-logo">
+    <a href="https://furamavietnam.com/vi/" class="headertext"><img class="mob-standard-logo"
+                                                                    src="../../assets/images/logo.png"
+                                                                    alt=" Logo Header Menu"></a>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row mt-4">
+    <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse px-5" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 px-5">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page"
+                 href="">Trang chủ</a>
+            </li>
+            <li class="nav-item text-primary">
+              <a class="nav-link"
+                 routerLink="/customer/list"
+                 target="_self">Khách hàng</a>
+            </li>
+            <li class="nav-item text-primary">
+              <a class="nav-link"
+                 routerLink="/facility/list"
+                 target="_self">Dịch vụ</a>
+            </li>
+            <li class="nav-item text-primary">
+              <a class="nav-link"
+                 routerLink="/contract/list"
+                 target="_self">Hợp đồng</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
